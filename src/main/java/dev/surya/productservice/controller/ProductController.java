@@ -13,7 +13,7 @@ public class ProductController {
     private ProductService productService;
 
     // constructor injection
-    public ProductController(@Qualifier("selfProductServiceImpl")ProductService productService) {
+    public ProductController(@Qualifier("fakeProductService")ProductService productService) {
         this.productService = productService;
     }
 
