@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api/v1/products")
 public class ProductController {
@@ -37,7 +39,8 @@ public class ProductController {
 
     }
     @PostMapping
-    public void createProductById() {
+    public GenericProductDto createProduct(@RequestBody GenericProductDto product) {
+        return productService.createProduct(product);
 
     }
     @PutMapping("/{id}")
