@@ -1,5 +1,6 @@
 package dev.surya.productservice.controller;
 
+import dev.surya.productservice.dtos.GenericProductDto;
 import dev.surya.productservice.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,7 +14,7 @@ public class ProductController {
     private ProductService productService;
 
     // constructor injection
-    public ProductController(@Qualifier("selfProductServiceImpl")ProductService productService) {
+    public ProductController(@Qualifier("fakeProductService")ProductService productService) {
         this.productService = productService;
     }
 
@@ -27,7 +28,7 @@ public class ProductController {
 
     }
     @GetMapping("/{id}")
-    public String getProductById(@PathVariable("id") Long id) {
+    public GenericProductDto getProductById(@PathVariable("id") Long id) {
         return productService.getProductById(id);
 
     }
