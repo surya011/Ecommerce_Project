@@ -5,6 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
+
+//for Delombok press ctrl + shift+ a
 public class Product extends BaseModel {
     private  String title;
     private String description;
