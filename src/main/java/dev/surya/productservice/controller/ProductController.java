@@ -1,11 +1,18 @@
 package dev.surya.productservice.controller;
 
+import dev.surya.productservice.dtos.ExceptionDto;
+import dev.surya.productservice.dtos.FakeStoreProductDto;
 import dev.surya.productservice.dtos.GenericProductDto;
+import dev.surya.productservice.exceptions.NotFoundException;
 import dev.surya.productservice.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -26,16 +33,23 @@ public class ProductController {
 //        this.productService = productService;
 //    }
     @GetMapping
-    public void getAllProducts() {
+    public List<GenericProductDto> getAllProducts() {
+        return productService.getAllProducts();
 
     }
     @GetMapping("/{id}")
-    public GenericProductDto getProductById(@PathVariable("id") Long id) {
+    public GenericProductDto getProductById(@PathVariable("id") Long id) throws NotFoundException {
         return productService.getProductById(id);
 
     }
+
     @DeleteMapping("/{id}")
-    public void deleteProductById() {
+    public ResponseEntity<GenericProductDto> deleteProductById(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(
+                productService.deleteProduct(id),
+                HttpStatus.OK
+        );
+      //  return productService.deleteProduct(id);
 
     }
     @PostMapping
@@ -44,7 +58,8 @@ public class ProductController {
 
     }
     @PutMapping("/{id}")
-    public void updateProductById() {
+    public GenericProductDto updateProductById(@RequestBody GenericProductDto product) {
+        return  productService.updateProduct(product);
 
     }
 }
