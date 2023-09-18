@@ -12,7 +12,7 @@ public interface ProductService {
     //Product getProductById(Long Id);
     GenericProductDto getProductById(Long Id) throws NotFoundException;
 
-    GenericProductDto updateProduct(GenericProductDto product);
+    GenericProductDto updateProduct(GenericProductDto product, Long id);
 
     List<GenericProductDto> getAllProducts();
 
