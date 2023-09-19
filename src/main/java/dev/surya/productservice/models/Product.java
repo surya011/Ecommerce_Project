@@ -7,6 +7,7 @@ import lombok.Setter
 @Setter
 
 //for Delombok press ctrl + shift+ a
+//checking git remote
 public class Product extends BaseModel {
     private String title;
     private String description;
