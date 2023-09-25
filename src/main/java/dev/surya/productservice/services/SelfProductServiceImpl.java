@@ -14,14 +14,14 @@ public class SelfProductServiceImpl implements ProductService {
     }
 
     @Override
-    public GenericProductDto updateProduct(GenericProductDto product, Long id) {
-        return  null;
-    }
-
-    @Override
     public GenericProductDto getProductById(Long Id){
       return null;
  }
+
+    @Override
+    public GenericProductDto updateProduct(Long id) {
+        return null;
+    }
 
     @Override
     public List<GenericProductDto> getAllProducts() {

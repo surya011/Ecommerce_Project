@@ -1,19 +1,14 @@
 package dev.surya.productservice.controller;
 
-import dev.surya.productservice.dtos.ExceptionDto;
-import dev.surya.productservice.dtos.FakeStoreProductDto;
 import dev.surya.productservice.dtos.GenericProductDto;
 import dev.surya.productservice.exceptions.NotFoundException;
 import dev.surya.productservice.services.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/products")
@@ -23,7 +18,7 @@ public class ProductController {
     private ProductService productService;
 
     // constructor injection
-    public ProductController(@Qualifier("fakeProductService")ProductService productService) {
+    public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
@@ -58,8 +53,8 @@ public class ProductController {
 
     }
     @PutMapping("/{id}")
-    public GenericProductDto updateProductById(@PathVariable("id") Long id ,@RequestBody GenericProductDto product) {
-        return  productService.updateProduct(product, id);
+    public GenericProductDto updateProductById(@PathVariable("id") Long id ) {
+        return  productService.updateProduct(id);
 
     }
 }

@@ -1,12 +1,13 @@
 package dev.surya.productservice.models;
 
 import lombok.Getter;
-import lombok.Setter
+import lombok.Setter;
 
 @Getter
 @Setter
 
 //for Delombok press ctrl + shift+ a
+//checking git remote
 public class Product extends BaseModel {
     private String title;
     private String description;
