@@ -1,4 +1,4 @@
-package dev.surya.productservice.inheritancedemo.singletable;
+package dev.surya.productservice.inheritancedemo.tableperclass;
 
 import dev.surya.productservice.inheritancedemo.mappedsuperclass.User;
 import jakarta.persistence.Entity;
@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity(name = "st_Student")
+@Entity(name = "tpc_Student")
 public class Student extends User {
     private double psp;
     private double attendance;
