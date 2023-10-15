@@ -1,9 +1,9 @@
-package dev.surya.productservice.inheritancedemo.singletable;
+package dev.surya.productservice.inheritancedemo.mappedsuperclass;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository("st_ur")
+@Repository("ms_ur")
 public interface UserRepository
 extends JpaRepository<User, Long> {
 
