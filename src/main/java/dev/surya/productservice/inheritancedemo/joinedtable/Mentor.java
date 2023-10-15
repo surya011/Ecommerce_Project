@@ -1,6 +1,5 @@
-package dev.surya.productservice.inheritancedemo.singletable;
+package dev.surya.productservice.inheritancedemo.joinedtable;
 
-import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import lombok.Getter;
@@ -8,8 +7,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity(name ="st_mentor")
-@DiscriminatorValue("3")
+@Entity(name = "jt_mentor")
+@PrimaryKeyJoinColumn(name ="user_id")
 public class Mentor extends User {
     private double averageRating;
 }
