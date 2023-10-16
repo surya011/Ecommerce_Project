@@ -1,9 +1,5 @@
 package dev.surya.productservice.models;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.*;
 
 
@@ -18,10 +14,14 @@ public class Product extends BaseModel {
     private String title;
     private String description;
     private String image;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST})
+    @JoinColumn(name ="category")
     private Category category;
     //private double price;
-    @OneToOne
+
+    //With this change cascade now you don't have to save the price in db specifically
+    // Added cascade remove to delete the price also if product is deleted
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Price price;
 
 }
