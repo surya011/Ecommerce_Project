@@ -3,6 +3,7 @@ package dev.surya.productservice.models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.*;
 
 
@@ -19,6 +20,8 @@ public class Product extends BaseModel {
     private String image;
     @ManyToOne
     private Category category;
-    private double price;
+    //private double price;
+    @OneToOne
+    private Price price;
 
 }
