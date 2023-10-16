@@ -64,9 +64,13 @@ public class ProductserviceApplication implements CommandLineRunner {
         Price price = new Price("Rupee",10);
         //Price savedPrice = priceRepository.save(price);
 
+        Price price = new Price();
+        Price savedPrice = priceRepository.save(price);
+
         Product product = new Product();
         product.setTitle("Iphone 15 Pro");
         product.setDescription("The Best Iphone Ever");
+
         product.setCategory(category);
         product.setPrice(price);
 
@@ -75,6 +79,7 @@ public class ProductserviceApplication implements CommandLineRunner {
         productRepository.deleteById(UUID.fromString("407f9cb1-959a-466e-a953-9c1e28ce6331"));
 
         // After saving this product i got category id from the category table
+
 
 //        Category category1 = categoryRepository.findById(UUID.fromString("130bf2f8-bbf4-4d5e-b3b3-820edcad37d4")).get();
 //
