@@ -1,6 +1,5 @@
 package dev.surya.productservice.models;
 import jakarta.persistence.*;
-
 import lombok.*;
 
 

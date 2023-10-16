@@ -64,8 +64,6 @@ public class ProductserviceApplication implements CommandLineRunner {
         Price price = new Price("Rupee",10);
         //Price savedPrice = priceRepository.save(price);
 
-        Price price = new Price();
-        Price savedPrice = priceRepository.save(price);
 
         Product product = new Product();
         product.setTitle("Iphone 15 Pro");
