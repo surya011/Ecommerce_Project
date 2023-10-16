@@ -4,8 +4,10 @@ package dev.surya.productservice;
 import dev.surya.productservice.inheritancedemo.joinedtable.MentorRepository;
 import dev.surya.productservice.inheritancedemo.joinedtable.UserRepository;
 import dev.surya.productservice.models.Category;
+import dev.surya.productservice.models.Price;
 import dev.surya.productservice.models.Product;
 import dev.surya.productservice.repositories.CategoryRepository;
+import dev.surya.productservice.repositories.PriceRepository;
 import dev.surya.productservice.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
@@ -21,16 +23,19 @@ public class ProductserviceApplication implements CommandLineRunner {
 
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
+    private final   PriceRepository priceRepository;
 
 
     public ProductserviceApplication(@Qualifier("jt_mr") MentorRepository mentorRepository,
                                      @Qualifier("jt_ur") UserRepository userRepository,
                                      ProductRepository productRepository,
-                                     CategoryRepository categoryRepository) {
+                                     CategoryRepository categoryRepository,
+                                     PriceRepository priceRepository) {
         this.mentorRepository = mentorRepository;
         this.userRepository = userRepository;
         this.productRepository = productRepository;
         this.categoryRepository = categoryRepository;
+        this.priceRepository = priceRepository;
 
     }
 
@@ -56,20 +61,24 @@ public class ProductserviceApplication implements CommandLineRunner {
         category.setName("Apple devices");
         Category savedCategory = categoryRepository.save(category);
 
+        Price price = new Price();
+        Price savedPrice = priceRepository.save(price);
+
         Product product = new Product();
         product.setTitle("Iphone 15 Pro");
         product.setDescription("The Best Iphone Ever");
         product.setCategory(savedCategory);
+        product.setPrice(savedPrice);
 
         productRepository.save(product);
 
         // After saving this product i got category id from the category table
 
-        Category category1 = categoryRepository.findById(UUID.fromString("130bf2f8-bbf4-4d5e-b3b3-820edcad37d4")).get();
-
-        System.out.println("Category name is: " + category1.getName());
-        System.out.println("Printing all products in the category");
-        Thread.sleep(1000);
+//        Category category1 = categoryRepository.findById(UUID.fromString("130bf2f8-bbf4-4d5e-b3b3-820edcad37d4")).get();
+//
+//        System.out.println("Category name is: " + category1.getName());
+//        System.out.println("Printing all products in the category");
+//        Thread.sleep(1000);
 
 
 //        for (Product product1 : category1.getProducts()) {
