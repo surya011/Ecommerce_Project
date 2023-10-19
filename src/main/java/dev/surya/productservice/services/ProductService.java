@@ -9,7 +9,7 @@ import java.util.List;
 public interface ProductService {
     GenericProductDto createProduct(GenericProductDto product);
 
-    GenericProductDto updateProduct(Long id);
+    GenericProductDto updateProduct(Long id, GenericProductDto product) ;
 
     //Product getProductById(Long Id);
     GenericProductDto getProductById(Long id) throws NotFoundException;

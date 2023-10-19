@@ -10,7 +10,6 @@ import java.security.ProtectionDomain;
 import java.util.List;
 
 @Service("selfProductServiceImpl")
-@Primary
 public class SelfProductServiceImpl implements ProductService {
     private ProductRepository productRepository;
 
@@ -23,14 +22,15 @@ public class SelfProductServiceImpl implements ProductService {
     }
 
     @Override
+    public GenericProductDto updateProduct(Long id, GenericProductDto product) {
+        return null;
+    }
+
+    @Override
     public GenericProductDto getProductById(Long Id){
       return null;
  }
 
-    @Override
-    public GenericProductDto updateProduct(Long id) {
-        return null;
-    }
 
     @Override
     public List<GenericProductDto> getAllProducts() {

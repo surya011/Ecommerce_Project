@@ -14,6 +14,8 @@ import java.util.List;
 @Service("fakeStoreProductService")
 // @Primary removing it and putting it on SelfproductImplementation
 @Repository("fakeStoreProductService")
+
+@Primary
 public class FakeStoreProductService implements ProductService {
     private FakeStoryProductServiceClient fakeStoryProductServiceClient;
 
@@ -40,8 +42,8 @@ public class FakeStoreProductService implements ProductService {
     }
 
     @Override
-    public GenericProductDto updateProduct(Long id) {
-        return convertFakeStoreProductIntoGenericProduct(fakeStoryProductServiceClient.updateProduct(id));
+    public GenericProductDto updateProduct(Long id, GenericProductDto product) {
+        return convertFakeStoreProductIntoGenericProduct(fakeStoryProductServiceClient.updateProduct(id,product));
     }
 
     @Override
