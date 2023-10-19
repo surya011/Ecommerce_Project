@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service("fakeStoreProductService")
-@Primary
+// @Primary removing it and putting it on SelfproductImplementation
 @Repository("fakeStoreProductService")
 public class FakeStoreProductService implements ProductService {
     private FakeStoryProductServiceClient fakeStoryProductServiceClient;
