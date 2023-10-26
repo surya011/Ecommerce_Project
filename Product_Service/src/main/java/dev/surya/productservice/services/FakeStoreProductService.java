@@ -13,9 +13,10 @@ import java.util.List;
 
 @Service("fakeStoreProductService")
 // @Primary removing it and putting it on SelfproductImplementation
+@Primary
 @Repository("fakeStoreProductService")
 
-@Primary
+
 public class FakeStoreProductService implements ProductService {
     private FakeStoryProductServiceClient fakeStoryProductServiceClient;
 

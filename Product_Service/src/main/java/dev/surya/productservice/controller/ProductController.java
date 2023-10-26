@@ -13,12 +13,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/products")
 public class ProductController {
-//Di with only autowired will also work
+    //Di with only autowired will also work
     //@Autowired(not recommended field injection
     private ProductService productService;
 
     // constructor injection
-    public ProductController(ProductService productService) {
+    public ProductController(@Qualifier("fakeStoreProductService") ProductService productService) {
         this.productService = productService;
     }
 
@@ -32,6 +32,7 @@ public class ProductController {
         return productService.getAllProducts();
 
     }
+
     @GetMapping("/{id}")
     public GenericProductDto getProductById(@PathVariable("id") Long id) throws NotFoundException {
         return productService.getProductById(id);
@@ -44,17 +45,19 @@ public class ProductController {
                 productService.deleteProduct(id),
                 HttpStatus.OK
         );
-      //  return productService.deleteProduct(id);
+        //  return productService.deleteProduct(id);
 
     }
+
     @PostMapping
     public GenericProductDto createProduct(@RequestBody GenericProductDto product) {
         return productService.createProduct(product);
 
     }
+
     @PutMapping("/{id}")
-    public GenericProductDto updateProductById(@PathVariable("id") Long id , @RequestBody GenericProductDto product) {
-        return  productService.updateProduct(id,product);
+    public GenericProductDto updateProductById(@PathVariable("id") Long id, @RequestBody GenericProductDto product) {
+        return productService.updateProduct(id, product);
 
     }
 }
